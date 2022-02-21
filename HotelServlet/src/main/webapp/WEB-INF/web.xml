@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>Hotel</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>customtags</taglib-uri>
+			<taglib-location>/WEB-INF/tld/custom.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/page404.jsp</location>
+	</error-page>
+
+	<filter>
+		<filter-name>UTFFilter</filter-name>
+		<filter-class>com.dkoroliuk.hotel_servlet.controller.servlet.UTFFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.dkoroliuk.hotel_servlet.controller.servlet.SessionFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>AuthenticationFilter</filter-name>
+		<filter-class>com.dkoroliuk.hotel_servlet.controller.servlet.AuthorizationFilter</filter-class>
+	</filter> 
+	<filter-mapping>
+		<filter-name>UTFFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>AuthenticationFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

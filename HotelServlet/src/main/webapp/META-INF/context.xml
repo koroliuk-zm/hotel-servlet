@@ -1,0 +1,13 @@
+<Context>
+
+	<Resource name="jdbc/Hotel" auth="Container"
+		type="javax.sql.DataSource" maxTotal="100" maxIdle="30"
+		maxWaitMillis="10000" defaultTransactionIsolation="READ_COMMITTED"
+
+		driverClassName="com.mysql.cj.jdbc.Driver" username="root"
+		password="1234" url="jdbc:mysql://localhost:3306/hotelservletdb" />
+
+	<ResourceLink name="jdbc/Hotel"
+		global="jdbc/Hotel" type="javax.sql.DataSource" />
+
+</Context>
