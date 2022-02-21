@@ -1,4 +1,4 @@
-package com.dkoroliuk_hotel_servlet.model.DAO;
+package com.dkoroliuk.hotel_servlet.model.DAO;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dkoroliuk.hotel_servlet.exception.DBException;
-import com.dkoroliuk.hotel_servlet.model.DAO.OrderDAO;
 import com.dkoroliuk.hotel_servlet.model.entity.Order;
 import com.dkoroliuk.hotel_servlet.model.entity.OrderStatus;
 import com.dkoroliuk.hotel_servlet.model.entity.Room;
@@ -125,6 +124,12 @@ public class OrderDAOMock implements OrderDAO {
 	@Override
 	public void setExpiredIfOrderUnpaidMoreThanTwoDays(Order order) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setClosedAndFeeRoom(Order order) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -86,6 +86,7 @@ public class SqlQuery {
 	public static final String DELETE_ORDER = "DELETE FROM orders WHERE id=?";
 	
 	public static final String SET_ORDER_STATUS_PAID = "UPDATE orders SET order_status_id = 3 WHERE id = ?;";
+	public static final String SET_ORDER_STATUS_CLOSED = "UPDATE orders SET order_status_id = 5 WHERE id = ?;";
 
 //	Request DAO
 	public static final String ADD_REQUEST = "INSERT INTO request (users_id, seats_number, room_types_id, request_date, "
@@ -110,5 +111,7 @@ public class SqlQuery {
 			+ " (select users_id from request where id =?), " + " 2, " + " (select id from room where number = ?))";
 
 	public static final String DELETE_REQUEST = "DELETE FROM request WHERE id=?";
+
+	
 
 }

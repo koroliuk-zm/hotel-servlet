@@ -1,5 +1,6 @@
 package com.dkoroliuk.hotel_servlet.controller.command;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -14,11 +15,12 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import com.dkoroliuk.hotel_servlet.model.DAO.RequestDAOImpl;
+import com.dkoroliuk.hotel_servlet.model.DAO.RequestDAOMock;
 import com.dkoroliuk.hotel_servlet.model.DAO.RoomDAOImpl;
+import com.dkoroliuk.hotel_servlet.model.DAO.RoomDAOMock;
 import com.dkoroliuk.hotel_servlet.model.DAO.UserDAOImpl;
-import com.dkoroliuk_hotel_servlet.model.DAO.RequestDAOMock;
-import com.dkoroliuk_hotel_servlet.model.DAO.RoomDAOMock;
-import com.dkoroliuk_hotel_servlet.model.DAO.UserDAOMock;
+import com.dkoroliuk.hotel_servlet.model.DAO.UserDAOMock;
+import com.dkoroliuk.hotel_servlet.util.Localizer;
 
 public class WaiterPageCommandTest {
 	@Test
@@ -34,11 +36,15 @@ public class WaiterPageCommandTest {
 			userDAOMock.when(() -> UserDAOImpl.getInstance()).thenReturn(new UserDAOMock());
 			try (MockedStatic<RoomDAOImpl> roomDAOMock = Mockito.mockStatic(RoomDAOImpl.class)) {
 				roomDAOMock.when(() -> RoomDAOImpl.getInstance()).thenReturn(new RoomDAOMock());
-				try (MockedStatic<RequestDAOImpl> requestDAOMock = Mockito.mockStatic(RequestDAOImpl.class)) {
-					requestDAOMock.when(() -> RequestDAOImpl.getInstance()).thenReturn(new RequestDAOMock());
-					Command com = CommandFactory.getCommand("waiterPage");
-					com.execute(req, resp);
-					verify(reqDisp).forward(req, resp);
+				try (MockedStatic<Localizer> util = Mockito.mockStatic(Localizer.class)) {
+					util.when(() -> Localizer.getString(any(), any())).thenReturn("error");
+					try (MockedStatic<RequestDAOImpl> requestDAOMock = Mockito.mockStatic(RequestDAOImpl.class)) {
+						requestDAOMock.when(() -> RequestDAOImpl.getInstance()).thenReturn(new RequestDAOMock());
+						Command com = CommandFactory.getCommand("waiterPage");
+						com.execute(req, resp);
+
+						verify(reqDisp).forward(req, resp);
+					}
 				}
 			}
 		}

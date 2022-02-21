@@ -13,8 +13,8 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import com.dkoroliuk.hotel_servlet.model.DAO.UserDAOImpl;
+import com.dkoroliuk.hotel_servlet.model.DAO.UserDAOMock;
 import com.dkoroliuk.hotel_servlet.util.Localizer;
-import com.dkoroliuk_hotel_servlet.model.DAO.UserDAOMock;
 
 public class DeleteUserCommandTest {
 	@Test

@@ -1,4 +1,4 @@
-package com.dkoroliuk_hotel_servlet.model.DAO;
+package com.dkoroliuk.hotel_servlet.model.DAO;
 
 import java.util.ArrayList;
 import java.util.List;

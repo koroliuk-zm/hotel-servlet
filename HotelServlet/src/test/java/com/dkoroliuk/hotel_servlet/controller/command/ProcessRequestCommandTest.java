@@ -12,9 +12,9 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import com.dkoroliuk.hotel_servlet.model.DAO.RequestDAOImpl;
+import com.dkoroliuk.hotel_servlet.model.DAO.RequestDAOMock;
 import com.dkoroliuk.hotel_servlet.model.DAO.UserDAOImpl;
-import com.dkoroliuk_hotel_servlet.model.DAO.RequestDAOMock;
-import com.dkoroliuk_hotel_servlet.model.DAO.UserDAOMock;
+import com.dkoroliuk.hotel_servlet.model.DAO.UserDAOMock;
 
 public class ProcessRequestCommandTest {
 

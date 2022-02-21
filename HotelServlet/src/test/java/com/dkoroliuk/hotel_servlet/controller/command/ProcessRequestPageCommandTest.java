@@ -13,7 +13,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import com.dkoroliuk.hotel_servlet.model.DAO.RequestDAOImpl;
-import com.dkoroliuk_hotel_servlet.model.DAO.RequestDAOMock;
+import com.dkoroliuk.hotel_servlet.model.DAO.RequestDAOMock;
 
 public class ProcessRequestPageCommandTest {
 	@Test

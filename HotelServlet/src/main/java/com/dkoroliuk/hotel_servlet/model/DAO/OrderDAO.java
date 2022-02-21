@@ -21,4 +21,6 @@ public interface OrderDAO {
 
 	void setExpiredIfOrderUnpaidMoreThanTwoDays(Order order);
 
+	void setClosedAndFeeRoom(Order order);
+
 }

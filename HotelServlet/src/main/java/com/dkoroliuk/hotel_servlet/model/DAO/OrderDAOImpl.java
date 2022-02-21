@@ -305,4 +305,30 @@ public class OrderDAOImpl implements OrderDAO {
 		}
 	}
 
+	@Override
+	public void setClosedAndFeeRoom(Order order) {
+		Connection con = null;
+		try {
+			con = PooledConnections.getInstance().getConnection();
+			con.setAutoCommit(false);
+			changeRoomStatusToFree(con, order.getRoom().getId());
+			changeOrderStatusToClosed(con, order.getId());
+			con.commit();
+		} catch (SQLException e) {
+			rollback(con);
+			logger.error("Can`t set order expired when order is not paid more than two days", e);
+		} finally {
+			close(con);
+		}
+		
+	}
+
+	private void changeOrderStatusToClosed(Connection con, long id) throws SQLException {
+		try (PreparedStatement ps = con.prepareStatement(SqlQuery.SET_ORDER_STATUS_CLOSED);) {
+			ps.setLong(1, id);
+			ps.executeUpdate();
+		}
+		
+	}
+
 }
